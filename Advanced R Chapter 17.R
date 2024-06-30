@@ -115,3 +115,31 @@ string_math(("x" * 2 + "-y") * 3)
 df <- data.frame(x = 1:5, y = sample(5))
 eval_tidy(expr(x + y), df)
 
+
+with2 <- function(df, expr) {
+  eval_tidy(enexpr(expr), df)
+}
+
+with2(df, x + y)
+
+
+# Section 17.8
+
+with2 <- function(df, expr) {
+  a <- 1000
+  eval_tidy(enexpr(expr), df)
+}
+
+df <- data.frame(x = 1:3)
+a <- 10
+
+with2(df, x + a)
+
+
+# always use enquo when using data masks. This makes sure you're using the right environment.
+with2 <- function(df, expr) {
+  a <- 1000
+  eval_tidy(enquo(expr), df)
+}
+
+with2(df, x + a)
