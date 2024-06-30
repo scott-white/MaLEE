@@ -7,4 +7,6 @@
 - `enexpre()`
 - `eval()`
 - `tidy_eval()`
+- `env()`
+- `caller_env()`
 - `enquo()`
